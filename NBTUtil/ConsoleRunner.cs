@@ -17,6 +17,7 @@ namespace NBTUtil
             { ConsoleCommand.Print, new PrintOperation() },
             { ConsoleCommand.PrintTree, new PrintTreeOperation() },
             { ConsoleCommand.Json, new JsonOperation() },
+            { ConsoleCommand.FindPurpurBlocks, new BlockFinderOperation() },
         };
 
         private ConsoleOptions _options;

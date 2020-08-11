@@ -32,5 +32,21 @@ namespace NBTExplorer.Model
         {
             get { return NodeDisplayPrefix + Tag.Data.Length + " long integers"; }
         }
+
+        public override bool Parse(string value)
+        {
+            string[] splitValue = value.Split('|');
+
+            long[] longValues = new long[splitValue.Length];
+            for (int i = 0; i < splitValue.Length; i++)
+            {
+                longValues[i] = long.Parse(splitValue[i]);
+            }
+
+            Tag.Data = longValues;
+            IsDataModified = true;
+
+            return true;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace NBTUtil
         SetList,
         Json,
         Help,
+        FindPurpurBlocks,
     }
 
     class ConsoleOptions
@@ -43,7 +44,7 @@ namespace NBTUtil
                     Command = ConsoleCommand.Json;
                     Values.Add(v);
                 }},
-                { "setvalue=", "Set a single tag value", v => { 
+                { "setvalue=", "Set a single tag value", v => {
                     Command = ConsoleCommand.SetValue;
                     _currentKey = "setvalue";
                     if (!string.IsNullOrEmpty(v))
@@ -63,6 +64,18 @@ namespace NBTUtil
                             Values.Add(v);
                             break;
                     }
+                }},
+                { "find_blocks", "Finds all purpur blocks in given world and saves them to a json file", command => {
+                    Command = ConsoleCommand.FindPurpurBlocks;
+                }},
+                { "material=", "Sets the target material", material => {
+                    Values.Add("material=" + material);
+                }},
+                { "action=", "Sets the action when finding a block!", actionValue => {
+                    Values.Add("action=" + actionValue);
+                }},
+                { "json_path=", "Sets the path to the file to which will the json-content be saved!", path=> {
+                    Values.Add("json_path=" + path);
                 }},
             };
         }
